@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee's Attrition</title>
+<style>
+	body
+	{
+		background-color:white;margin: 0;padding: 0px;
+	}
+</style>
+  <meta charset="utf-8">
+
+</head>
+
+<body>
+	<div style="border:0px solid black;background-color: white"><h1 style="text-align: center;background: linear-gradient(135deg, #2A2A72 7px, #2A2A72 100%);-webkit-text-fill-color: transparent;
+    font-weight: 600;-webkit-background-clip: text;font-size: 35px ">Employee Attrition Prediction Training Model</h1></div>
+	<div style="background-color: white"> 
+		<div style="background-color: white;display: inline-block;width: 50%;"></div>
+		<div style="display: inline-block;width: 49%;margin: 0px auto;text-align: center;vertical-align: top;background-color: white;">
+<br><br>
+			
+
+		</div>
+
+	</div>
+	<br><br>
+	<div style="margin:0px auto;background-color: rgb(240,245,235);">
+		<br>
+		<br>
+		<br>
+	<form action="{{ url_for('predict')}}"method="POST">
+  
+	<div style="margin:0px auto;display: inline-block;width: 15%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  		<label style="font-size: 12px;"><h1>Age</h1></label>
+  		  <input type="number" name="Age" value="" style="height: 20px;border-radius: 10px">
+  		</div>
+
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Department</h1></label>
+  				<select name="Department" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  					    <option value="0">Human Resource</option>
+    <option value="1">Research and Development</option>
+    <option value="2">Sales</option>
+
+  				</select>
+  			</div>
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+  		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Distance From Home(in_kms)</h1></label>
+  				<input type="number" name="DistanceFromHome" value="">
+  
+  			</div>
+  		</div>
+  		<br><br><br><br>
+	<div style="margin:0px auto;display: inline-block;width: 15%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  		<label style="font-size: 12px;"><h1>Environment Satisfaction(Ratings)</h1></label>
+  		<select name="EnvironmentSatisfaction" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  		  <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+  		</div>
+
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Gender</h1></label>
+  				<select name="Gender" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  				<option value="0">Female</option>
+    <option value="1">Male</option>
+</select>
+  			</div>
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+  		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Job Involvement(Ratings)</h1></label>
+  				<select name="JobInvolvement" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  					  <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  
+  				</select>
+  			</div>
+  		</div>
+
+
+  		<br><br><br><br>
+	<div style="margin:0px auto;display: inline-block;width: 15%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  		<label style="font-size: 12px;"><h1>Job Level</h1></label>
+  		<select name="JobLevel" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  		<option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  		</select>
+  		</div>
+
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Job Satisfaction(Ratings)</h1></label>
+  				<select name="JobSatisfaction" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  					<option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  				</select>
+  			</div>
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+  		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Marital Status</h1></label>
+  				<select name="MartialStatus" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  					 <option value="0">Divorced</option>
+    <option value="1">Married</option>
+    <option value="2">Single</option>
+  				</select>
+  			</div>
+  		</div>
+
+
+  		<br><br><br><br>
+	<div style="margin:0px auto;display: inline-block;width: 15%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  		<label  style="font-size: 12px;"><h1>Num Companies Worked</h1></label>
+  		<select name="NumCompaniesWorked" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  		<option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+  		</select>
+  		</div>
+
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Over Time</h1></label>
+  				<select name="OverTime" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  					 <option value="1">Yes</option>
+    <option value="0">No</option>
+  				</select>
+  			</div>
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+  		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Relationship Satisfication(Ratings)</h1></label>
+  				<select name="RelationshipSatisfication" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  					 <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  				</select>
+  			</div>
+  		</div>
+
+
+  		<br><br><br><br>
+	<div style="margin:0px auto;display: inline-block;width: 15%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg,#ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  		<label style="font-size: 12px;"><h1>Stock Option Level</h1></label>
+  		<select name="StockOptionLevel" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  		 <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  		</select>
+  		</div>
+
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Work Life Balance(Ratings)</h1></label>
+  				<select name="WorkLifeBalance" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  					 <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  				</select>
+  			</div>
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+  		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Years In Current Role</h1></label>
+  				<select name="YearsInCurrentRole" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  					<option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+  				</select>
+  			</div>
+  		</div>
+
+
+  		<br><br><br><br>
+	<div style="margin:0px auto;display: inline-block;width: 15%"></div>
+
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2 7px, #ABE9CD 100%);height: 200px">
+			
+  		<label style="font-size: 12px;"><h1>Years Since Last Promotion</h1></label>
+  		<select name="YearsSinceLastPromotion" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  		<option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+  		</select>
+  		</div>
+
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 10%"></div>
+       <input type="submit" value="Submit" style="height: 50px;text-align: center;font-size: 20px;border-radius: 15px;border:2px solid black">
+      <div style="margin:0px auto;display: inline-block;width: 10%"></div>
+		<div style="text-align:center;margin:0px auto;display: inline-block;background-color: transparent;width: 20%;">
+			<div style="background-color: transparent;"></div>
+			<div style="border:2px solid transparent;margin-top: -10%;;border-radius: 10%;box-shadow: 0px 0px 15px -2px;background: linear-gradient(135deg, #ff94c2  7px, #ABE9CD 100%);height: 200px">
+			
+  				<label style="font-size: 12px;"><h1>Years With Current Manager</h1></label>
+  				<select name="YearsWithCurrentManager" style="display: inline-block;height: 30px;border-top-right-radius: 10px;border-bottom-left-radius: 10px">
+  					  <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+  				</select>
+  			</div>
+  		</div>
+
+  		<div style="margin:0px auto;display: inline-block;width: 5%"></div>
+
+<br><br><br>
+
+  </form> 
+</div>
+</body>
+</html>
